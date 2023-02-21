@@ -1,15 +1,28 @@
 package Units;
 
-public class Sniper extends Character{
-    int shells;
+public class Sniper extends Shooter{
 
-    public Sniper(int attack, int armor, int damage, int health, int speed, String name, int shells) {
-        super(attack, armor, damage, health, speed, name);
-        this.shells = shells;
+    public Sniper(String name) {
+        super(name, 150.1f, 150, 10, 10, 5, 3, 4,
+                10, 5);
     }
 
-    public int getaccurate_shot(){
-        //Точный выстрел
-        return 15;
+    public Sniper(String name, Float hp, Integer maxHp, Integer attack, Integer minDamage, Integer maxDamage,
+                  Integer protection, Integer speed, int cartridges, int range) {
+        super(name, hp, maxHp, attack, minDamage, maxDamage, protection, speed, cartridges, range);
+    }
+
+    @Override
+    public Integer getAttack() {
+        return attack;
+    }
+
+    @Override
+    public StringBuilder getInfo() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("Снайпер: \t").append(Sniper.super.name)
+                .append("\t ATK: \t").append(Sniper.super.attack)
+                .append("\t HP: \t").append(Sniper.super.hp)
+                .append("\t Arrows: ").append(Sniper.super.cartridges);
     }
 }
