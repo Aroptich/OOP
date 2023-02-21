@@ -1,4 +1,4 @@
-package Unit;
+package Units;
 
 public class Farmer extends Human{
     int delivery;
