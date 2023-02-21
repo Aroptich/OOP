@@ -1,4 +1,4 @@
-package Unit;
+package Units;
 
 public abstract class Human implements GameInterface {
 
