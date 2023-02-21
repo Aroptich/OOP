@@ -1,16 +1,83 @@
 import Units.*;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Random;
+
 public class MiniGame {
     public static void main(String[] args) {
-        Fermer fermer = new Fermer(1, 1, 1, 1, 3, "Крестьянин");
-        Bandit bandit = new Bandit(8, 3, 3, 10, 6, "Разбойник");
-        Sniper sniper = new Sniper(12, 10, 9, 15, 9, "Снайпер", 10);
-        Wizard wizard = new Wizard(17,12,14,30,9, "Волшебник");
-        Spearman spearman = new Spearman(4,5,2,10,4,"Копейщик");
-        Crossbowman crossbowman = new Crossbowman(6,3,3,10,4,"Арбалетчик", 12);
-        Monk monk = new Monk(12,7,10,30,5,"Монах");
-
-
+        ArrayList<Human> team1 = new ArrayList<>();
+        team1.add(new Sniper("Boris"));
+        team1.add(new Crossbowman("Anna"));
+        ArrayList<Human> team2 = new ArrayList<>();
+        ArrayList<Human> teams = new ArrayList<>();
+        createTeam(team1, 0, 4);
+        createTeam(team2, 3,7);
+        teams.addAll(team1);
+        teams.addAll(team2);
+        for (int i = 0; i < team1.size(); i++) {
+            System.out.println(team1.get(i).getInfo());
+        }
+        teams.sort(new Comparator<Human>() {
+            @Override
+            public int compare(Human o1, Human o2) {
+                return  o1.getSpeed() - o2.getSpeed();
+            }
+        });
+        System.out.println();
+        for (int i = 0; i < team2.size(); i++) {
+            System.out.println(team2.get(i).getInfo());
+        }
+        System.out.println();
+        for (int i = 0; i < teams.size(); i++) {
+            System.out.println(teams.get(i).getInfo());
+        }
+        System.out.println(team1.get(0).getInfo());
+        team1.get(0).step();
+        System.out.println(team1.get(0).getInfo());
+        System.out.println(team1.get(1).getInfo());
+        team1.get(1).step();
+        System.out.println(team1.get(1).getInfo());
     }
+
+    public static void createTeam(ArrayList targetList, int start, int end) {
+        int units = 10;
+        for (int i = 0; i < units; i++) {
+            int rnd = new Random().nextInt(start, end);
+            switch (rnd) {
+                case (0):
+                    targetList.add(new Sniper(getName()));
+                    break;
+                case (1):
+                    targetList.add(new Witch(getName()));
+                    break;
+                case (2):
+                    targetList.add(new Bandit(getName()));
+                    break;
+                case (3):
+                    targetList.add(new Farmer(getName()));
+                    break;
+                case (4):
+                    targetList.add(new Crossbowman(getName()));
+                    break;
+                case (5):
+                    targetList.add(new Spearman(getName()));
+                    break;
+                case (6):
+                    targetList.add(new Monk(getName()));
+                    break;
+            }
+        }
+    }
+
+        public static String getName () {
+            String name = String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
+//                for (int i = 0; i < list.size(); i++) {
+//                    if (list.get(i). > 0){
+//                        name += String.valueOf(new Random().nextInt(10));
+//                    }
+//                }
+            return name;
+        }
 
 }
