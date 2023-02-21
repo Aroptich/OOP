@@ -1,4 +1,4 @@
-package Unit;
+package Units;
 
 public class Monk extends Magic {
 
