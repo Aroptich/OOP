@@ -1,10 +1,17 @@
 package Units;
 
-public class Wizard extends Character{
-    public Wizard(int attack, int armor, int damage, int health, int speed, String name) {
-        super(attack, armor, damage, health, speed, name="Волшебник");
+public class Wizard extends Human{
+    protected int mana;
+    protected int maxMana;
+
+    public Wizard(String name, Float hp, Integer maxHp, Integer attack, Integer minDamage, Integer maxDamage,
+                 Integer protection, int mana, int maxMana) {
+        super(name, hp, maxHp, attack, minDamage, maxDamage, protection, 2);
+        this.mana = mana;
+        this.maxMana = maxMana;
     }
-    public int getSpells(){
-        return 20;
+
+    public Float healing (Integer damage, Human human){ return hp;}
+
     }
-}
+
