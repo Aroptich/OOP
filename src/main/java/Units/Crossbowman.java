@@ -1,29 +1,28 @@
-package Units;
+package OOP.Units;
 
-public class Crossbowman extends Shooter{
+public class Crossbowman extends Shooter {
 
-    public Crossbowman(String name) {
-        super(name, 150.1f, 150, 10, 10, 5, 3,
-                5,7,6);
+    public Crossbowman(String name, float hp, int maxHp, int attack, int damageMin, int damageMax, int defense,
+                       int speed, int cartridges, int range, int posX, int posY) {
+        super(name, hp, maxHp, attack, damageMin, damageMax, defense, speed, cartridges, range);
     }
 
+    public Crossbowman(String name) {
 
-    public Crossbowman(String name, Float hp, Integer maxHp, Integer attack, Integer minDamage, Integer maxDamage,
-                       Integer protection, Integer speed, int cartridges, int range) {
-        super(name, hp, maxHp, attack, minDamage, maxDamage, protection, speed, cartridges, range);
+        super(name, 110.f, 110, 20, 20, 10, 6,
+                5, 6, 5);
     }
 
     @Override
-    public Integer getAttack() { return attack; }
+    public int getAttack() { return attack; }
 
     @Override
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
         return builder.append("Арбалет: \t").append(Crossbowman.super.name)
-                .append("\t ATK: \t").append(Crossbowman.super.attack)
-                .append("\t HP: \t").append(Crossbowman.super.hp)
-                .append("\t Arrows: ").append(Crossbowman.super.cartridges)
-                .append("\t Speed: \t").append(Crossbowman.super.speed);
+                .append("\t| ATK:\t").append(Crossbowman.super.attack)
+                .append("\t| HP:\t").append(Crossbowman.super.hp)
+                .append("\t| Arrows: ").append(Crossbowman.super.cartridges)
+                .append("\t|").append("\t| (X.Y) : ").append(Crossbowman.super.coords.posX).append(".").append(Crossbowman.super.coords.posY);
     }
-
 }
