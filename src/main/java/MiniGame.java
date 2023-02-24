@@ -4,80 +4,80 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
-public class MiniGame {
+public class main {
     public static void main(String[] args) {
-        ArrayList<Human> team1 = new ArrayList<>();
-        team1.add(new Sniper("Boris"));
-        team1.add(new Crossbowman("Anna"));
-        ArrayList<Human> team2 = new ArrayList<>();
-        ArrayList<Human> teams = new ArrayList<>();
-        createTeam(team1, 0, 4);
-        createTeam(team2, 3,7);
-        teams.addAll(team1);
-        teams.addAll(team2);
-        for (int i = 0; i < team1.size(); i++) {
-            System.out.println(team1.get(i).getInfo());
-        }
-        teams.sort(new Comparator<Human>() {
-            @Override
-            public int compare(Human o1, Human o2) {
-                return  o1.getSpeed() - o2.getSpeed();
-            }
-        });
-        System.out.println();
-        for (int i = 0; i < team2.size(); i++) {
-            System.out.println(team2.get(i).getInfo());
-        }
-        System.out.println();
-        for (int i = 0; i < teams.size(); i++) {
-            System.out.println(teams.get(i).getInfo());
-        }
-        System.out.println(team1.get(0).getInfo());
-        team1.get(0).step();
-        System.out.println(team1.get(0).getInfo());
-        System.out.println(team1.get(1).getInfo());
-        team1.get(1).step();
-        System.out.println(team1.get(1).getInfo());
+        ArrayList<Human> holyTeam = new ArrayList<>();
+        ArrayList<Human> darkTeam = new ArrayList<>();
+
+
+        createTeam(holyTeam, 1, 5, 1);
+        createTeam(darkTeam, 4, 8, 10);
+        ArrayList<Human> allTeam = new ArrayList<>();
+        allTeam.addAll(holyTeam);
+        allTeam.addAll(darkTeam);
+
+        sortTeam(holyTeam);
+        sortTeam(darkTeam);
+        sortTeam(allTeam);
+
+
+        printingHeadlines();
+        getTeam(holyTeam);
+        printingHeadlines();
+        getTeam(darkTeam);
+        printingLine();
+
     }
 
-    public static void createTeam(ArrayList targetList, int start, int end) {
+    static void createTeam (ArrayList team, int start, int end,) {
         int units = 10;
         for (int i = 0; i < units; i++) {
             int rnd = new Random().nextInt(start, end);
             switch (rnd) {
-                case (0):
-                    targetList.add(new Sniper(getName()));
-                    break;
                 case (1):
-                    targetList.add(new Witch(getName()));
+                    team.add(new Sniper(getName());
                     break;
                 case (2):
-                    targetList.add(new Bandit(getName()));
+                    team.add(new Bandit(getName());
                     break;
                 case (3):
-                    targetList.add(new Farmer(getName()));
+                    team.add(new Witch(getName());
                     break;
                 case (4):
-                    targetList.add(new Crossbowman(getName()));
+                    team.add(new Farmer(getName());
                     break;
                 case (5):
-                    targetList.add(new Spearman(getName()));
+                    team.add(new Crossbowman(getName()));
                     break;
                 case (6):
-                    targetList.add(new Monk(getName()));
+                    team.add(new Monk(getName());
+                    break;
+                case (7):
+                    team.add(new Spearman(getName()));
                     break;
             }
         }
     }
 
-        public static String getName () {
-            String name = String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
-//                for (int i = 0; i < list.size(); i++) {
-//                    if (list.get(i). > 0){
-//                        name += String.valueOf(new Random().nextInt(10));
-//                    }
-//                }
-            return name;
+    static void getTeam(ArrayList<Human> team) {
+        for (int i = 0; i < team.size(); i++) {
+            System.out.println(team.get(i).getInfo());
         }
+    }
+    static void sortTeam (ArrayList<Human> team){
+        team.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
+    }
+    static String getName() {
+        String name = String.valueOf(Names.values()[new Random().nextInt(Names.values().length-1)]);
+        return name;
+    }
+    static void printingLine() {
+        System.out.println("*************************************************************");
+    }
+    static void printingHeadlines() {
+        System.out.println("*************************************************************");
+        System.out.println("Класс       Имя     |    ATK    |      HP       |           |" );
+        System.out.println("*************************************************************");
+    }
 
 }
