@@ -1,29 +1,16 @@
 package Units;
 
-public abstract class Shooter extends Human{
-    int cartridges;
-    int range;
+public abstract class Shooter extends Human {
+    protected int range;
+    protected int cartridges;
 
-    public Shooter(String name, Float hp, Integer maxHp, Integer attack, Integer minDamage, Integer maxDamage,
-                   Integer protection, Integer speed, int cartridges, int range) {
-        super(name, hp, maxHp, attack, minDamage, maxDamage, protection, speed);
-        this.cartridges = cartridges;
+    public Shooter(String name, float hp, int maxHp, int attack, int damageMin,
+                   int damageMax, int defense, int speed, int cartridges,
+                   int range) {
+        super(name, hp, maxHp, attack, damageMin, damageMax, defense, speed);
         this.range = range;
-    }
-
-    @Override
-    public void step() {
-        int cart = getCartridges();
-        if (cart > 0) {
-            setCartridges(cart-1);
-        }
-    }
-
-    public int getCartridges() {
-        return this.cartridges;
-    }
-
-    public void setCartridges(int cartridges) {
         this.cartridges = cartridges;
     }
+
+
 }
