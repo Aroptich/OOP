@@ -22,6 +22,5 @@ public class Bandit extends Warrior {
         return builder.append("Бандит: \t").append(Bandit.super.name)
                 .append("\t| ATK:\t").append(Bandit.super.attack)
                 .append("\t| HP:\t").append(Bandit.super.hp)
-                .append("\t|\t\t\t|").append("\t| (X.Y) : ").append(Bandit.super.coords.posX).append(".").append(Bandit.super.coords.posY);
-    }
+                 }
 }
