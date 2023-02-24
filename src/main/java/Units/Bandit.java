@@ -1,33 +1,27 @@
-package Units;
+package OOP.Units;
 
-public class Bandit extends Infantry{
-
+public class Bandit extends Warrior {
     int disguise;
 
-    public Bandit(String name, Float hp, Integer maxHp, Integer attack, Integer minDamage, Integer maxDamage, Integer protection, int disguise) {
-        super(name, hp, maxHp, attack, minDamage, maxDamage, protection);
+    public Bandit(String name, float hp, int maxHp, int attack, int damageMin, int damageMax, int defense, int speed, int disguise, int posX, int posY) {
+        super(name, hp, maxHp, attack, damageMin, damageMax, defense, speed);
         this.disguise = disguise;
     }
 
     public Bandit(String name) {
-        super(name, 15.1f, 15, 7, 5, 3, 6);
-        this.disguise = 15;
+        super(name, 200.f, 200, 30, 30, 20, 5, 5);
+        this.disguise = 50;
     }
 
-    public void steal(Shooter Shooter){
+    public void steal(int disguise, Shooter Shooter) {
     }
 
     @Override
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
         return builder.append("Бандит: \t").append(Bandit.super.name)
-                .append("\t ATK: \t").append(Bandit.super.attack)
-                .append("\t HP: \t").append(Bandit.super.hp)
-                .append("\t Speed: \t").append(Bandit.super.speed);
-    }
-
-    @Override
-    public void step() {
-
+                .append("\t| ATK:\t").append(Bandit.super.attack)
+                .append("\t| HP:\t").append(Bandit.super.hp)
+                .append("\t|\t\t\t|").append("\t| (X.Y) : ").append(Bandit.super.coords.posX).append(".").append(Bandit.super.coords.posY);
     }
 }
