@@ -1,42 +1,48 @@
 package Units;
 
-public abstract class Human implements GameInterface {
+import java.util.ArrayList;
 
+public abstract class Human implements GameInterfase {
     protected String name;
-    protected Float hp;
-    protected Integer maxHp;
-    protected Integer attack;
-    protected Integer minDamage;
-    protected Integer maxDamage;
-    protected Integer protection;
-    protected Integer speed;
-    protected Integer posX;
-    protected Integer posY;
+    protected float hp;
+    protected int maxHp;
+    protected int attack;
+    protected int damageMin;
+    protected int damageMax;
+    protected int defense;
+    protected int speed;
 
 
-    public Human(String name, Float hp, Integer maxHp, Integer attack, Integer minDamage, Integer maxDamage, Integer protection, Integer speed) {
+    public Human(String name, float hp, int maxHp, int attack, int damageMin,
+                 int damageMax, int defense, int speed) {
         this.name = name;
         this.hp = hp;
         this.maxHp = maxHp;
         this.attack = attack;
-        this.minDamage = minDamage;
-        this.maxDamage = maxDamage;
-        this.protection = protection;
+        this.damageMin = damageMin;
+        this.damageMax = damageMax;
+        this.defense = defense;
         this.speed = speed;
 
     }
 
-
-    public Integer getAttack() {
+    public int getAttack() {
         return attack;
     }
-    public Integer getProtection() { return protection; }
-//    public Integer getDamage() { return damage; }
+    public int getDefense() { return defense; }
+    public int getDamageMin() { return damageMin; }
 
-    public int getSpeed() {
-        return speed;
+    public int getDamageMax() { return damageMax; }
+    public int getSpeed() { return speed; }
+
+    public float getHp () { return hp; }
+
+    public float setHp (float p) { return hp-p; }
+
+
+
+    @Override
+    public StringBuilder getInfo() {
+        return null;
     }
-
-
-    public abstract void step();
 }
