@@ -2,26 +2,17 @@ package OOP.Units;
 
 public class Crossbowman extends Shooter {
 
-    public Crossbowman(String name, float hp, int maxHp, int attack, int damageMin, int damageMax, int defense,
-                       int speed, int cartridges, int range, int posX, int posY) {
-        super(name, hp, maxHp, attack, damageMin, damageMax, defense, speed, cartridges, range);
+    public Crossbowman(String name, Vector2D coords) {
+        super(name, 60.f, 60, 8, 3, 7, 4,
+                9, 20, 10, coords.posX, coords.posY);
     }
-
-    public Crossbowman(String name) {
-
-        super(name, 110.f, 110, 20, 20, 10, 6,
-                5, 6, 5);
+    @Override
+    public String getProfession() {
+        return "Арбалет";
     }
-
     @Override
-    public int getAttack() { return attack; }
-
-    @Override
-    public StringBuilder getInfo() {
-        StringBuilder builder = new StringBuilder();
-        return builder.append("Арбалет: \t").append(Crossbowman.super.name)
-                .append("\t| ATK:\t").append(Crossbowman.super.attack)
-                .append("\t| HP:\t").append(Crossbowman.super.hp)
-                .append("\t| Arrows: ").append(Crossbowman.super.cartridges)
-                 }
+    public String getEmoji() {
+        if(hp == 0) return "\uD83D\uDC80";
+        return "\uD83E\uDDDD\u200D♀️";
+    }
 }
