@@ -1,24 +1,19 @@
 package Units;
 
 public class Spearman extends Warrior {
-    public Spearman(String name, float hp, int maxHp, int attack, int damageMin, int damageMax, int defense, int speed, int posX, int posY) {
-        super(name, hp, maxHp, attack, damageMin, damageMax, defense, speed);
+
+    public Spearman(String name, Vector2D coords) {
+        super(name, 70.f, 70, 10, 2, 4, 9,
+                6, coords.posX, coords.posY);
     }
-
-    public Spearman(String name) {
-
-        super(name, 200.f, 200, 30, 5, 6, 5,
-                4);
-    }
-
-    public void runAway() {    }
-
     @Override
-    public StringBuilder getInfo() {
-        StringBuilder builder = new StringBuilder();
-        return builder.append("Копейщик:\t").append(Spearman.super.name)
-                .append("\t| ATK:\t").append(Spearman.super.attack)
-                .append("\t| HP:\t").append(Spearman.super.hp)
-                }
+    public String getProfession() {
+        return "Копейщик";
+    }
+    @Override
+    public String getEmoji() {
+        if(hp == 0) return "\uD83D\uDC80";
+        return "\uD83D\uDC77\u200D♂️";
+    }
 }
 
